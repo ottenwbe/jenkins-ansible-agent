@@ -20,12 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-ARG BASE_IMAGE_TAG=latest
+ARG BASE_IMAGE_TAG
 FROM jenkinsci/ssh-slave:${BASE_IMAGE_TAG}
+
+ARG ANSIBLE_VERSION
 
 RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get -y --no-install-recommends install python python-pip python-setuptools \
-    && pip install ansible \
+    && pip install wheel \
+    && pip install ansible==${ANSIBLE_VERSION} \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* 
