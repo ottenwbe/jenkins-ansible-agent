@@ -31,4 +31,4 @@ It will automatically create a docker tag based on the git branch/tag:
 |---                | ---               |
 | master            | testing           |  
 | feature/*         | testing           |  
-| <sem-ver-tag>     | 0.1.2  + latest   |  
+| \<sem-ver-tag\>     | 0.1.2  + latest   |  
