@@ -1,5 +1,3 @@
 #!/bin/bash
 
-jq --version
-
 docker build --build-arg ANSIBLE_VERSION=2.8.4 --build-arg BASE_IMAGE_TAG=latest -f $DOCKERFILE_PATH -t $IMAGE_NAME .
