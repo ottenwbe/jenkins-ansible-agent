@@ -1,0 +1,1 @@
+docker build --build-arg ANSIBLE_VERSION=2.8.3 -f $DOCKERFILE_PATH -t $IMAGE_NAME .
