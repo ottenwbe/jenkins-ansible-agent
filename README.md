@@ -24,3 +24,11 @@ make docker
 ## Docker Automated Build
 
 Docker hub's automated builds are configured to create the images.
+
+It will automatically create a docker tag based on the git branch/tag:
+
+| git branch/tag    | docker tag  |  
+|---                | ---            |
+| master            | master         |  
+| feature/*         | testing        |  
+| 0.1.2 (tag)       | 0.1.2          |  
