@@ -2,7 +2,7 @@ version: "2"
 
 services:
 
-  sut:
+  goss_test:
     volumes:
       - ./tests:/tests
     image: ottenwbe/jenkins-ansible-agent:sut
