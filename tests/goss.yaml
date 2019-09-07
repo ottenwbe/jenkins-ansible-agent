@@ -6,5 +6,6 @@ command:
     exit-status: 0
     stdout:
     - "/ansible-playbook/" 
+    - "/python version/" 
     stderr: []
     timeout: 10000
