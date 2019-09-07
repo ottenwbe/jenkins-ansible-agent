@@ -4,6 +4,6 @@ services:
 
   sut:
     volumes:
-      - ./tests:/tests
-    image: ottenwbe/jenkins-ansible-agent
+      - ./tests:/test
+    image: ottenwbe/jenkins-ansible-agent:sut
     command: /tests/run_tests.sh
