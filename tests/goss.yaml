@@ -1,0 +1,11 @@
+user:
+  jenkins:
+    exists: true
+command:
+  ansible-playbook --version:
+    exit-status: 0
+    stdout:
+    - "/ansible-playbook/" 
+    - "/python version/" 
+    stderr: []
+    timeout: 10000

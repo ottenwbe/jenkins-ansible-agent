@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+
+  sut:
+    volumes:
+      - ./tests:/tests
+    image: ottenwbe/jenkins-ansible-agent:sut
+    command: /tests/run_test.sh

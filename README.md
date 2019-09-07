@@ -1,5 +1,7 @@
 # jenkins-ansible-agent
 
+[![Docker Automated build](https://img.shields.io/docker/automated/ottenwbe/jenkins-ansible-agent.svg)](https://hub.docker.com/r/ottenwbe/jenkins-ansible-agent/)
+
 A docker ssh agent for Jenkins that allows you to run ansible scripts. 
 
 
