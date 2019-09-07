@@ -3,7 +3,6 @@ version: "2"
 services:
 
   sut:
-    build: .
     volumes:
       - ./tests:/tests
     image: ottenwbe/jenkins-ansible-agent
