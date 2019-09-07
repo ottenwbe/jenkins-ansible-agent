@@ -1,3 +1,10 @@
-sut:
-  image: ottenwbe/jenkins-ansible-agent:${CACHE_TAG}
-  command: /tests/run_tests.sh
+version: "2"
+
+services:
+
+  sut:
+    build: .
+    volumes:
+      - ./tests:/tests
+    image: ottenwbe/jenkins-ansible-agent
+    command: /tests/run_tests.sh
