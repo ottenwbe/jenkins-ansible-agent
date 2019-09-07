@@ -1,3 +1,10 @@
-process:
-  sshd:
-    running: true
+user:
+  jenkins:
+    exists: true
+command:
+  ansible-playbook --version:
+    exit-status: 0
+    stdout:
+    - "/ansible-playbook/" 
+    stderr: []
+    timeout: 10000

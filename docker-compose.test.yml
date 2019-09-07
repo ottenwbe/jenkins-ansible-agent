@@ -7,3 +7,4 @@ services:
       - ./tests:/test
     image: ottenwbe/jenkins-ansible-agent:sut
     command: /tests/run_test.sh
+    entrypoint: ""
