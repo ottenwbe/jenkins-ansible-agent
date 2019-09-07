@@ -1,4 +1,3 @@
-services:
-  sut:
-    image: ottenwbe/jenkins-ansible-agent:${CACHE_TAG}
-    command: tests/run_tests.sh
+sut:
+  image: ottenwbe/jenkins-ansible-agent:${CACHE_TAG}
+  command: /tests/run_tests.sh
