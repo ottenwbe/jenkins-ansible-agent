@@ -7,4 +7,5 @@ install:
 
 script:
   - export ANSIBLE_VERSION=$(yolk ansible)
-  - echo $ANSIBLE_VESION
+  - python update.py
+  - cat versions.sh
