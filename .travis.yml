@@ -6,6 +6,5 @@ install:
   - pip install yolk3k
 
 script:
-  - export ANSIBLE_VERSION=$(yolk -V ansible)
   - python update.py
   - cat versions.sh
