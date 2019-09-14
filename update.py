@@ -17,12 +17,11 @@ def replace_outdated_versions(new_version):
         if(re.search(ANSIBLE_IMAGE_VERSION, line) != None):
             current_version = re.search(VERSION_REGEX, line).group()
             if (current_version != new_version):
-                print("ANSIBLE_IMAGE_VERSION={}".format(new_version), end='')
+                print("ANSIBLE_IMAGE_VERSION={}".format(new_version), end = '')
             else:
-                print(line, end='')
+                print(line, end = '')
         else:
-            print(line, end='')
-
+            print(line, end = '')
 
 if __name__ == "__main__":
     version_number = get_latest_ansible_version()
