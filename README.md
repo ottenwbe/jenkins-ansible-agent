@@ -15,7 +15,7 @@ docker pull ottenwbe/jenkins-ansible-agent
 
 ## Build
 
-## Local Build
+### Local Build
 
 Use the Makefile to build the Docker image locally.
 
@@ -23,7 +23,7 @@ Use the Makefile to build the Docker image locally.
 make docker
 ```
 
-## Docker Automated Build
+### Docker Automated Build
 
 Docker hub's automated builds are configured to create the images.
 
@@ -34,6 +34,12 @@ It will automatically create a docker tag based on the git branch/tag:
 | master            | testing           |  
 | feature/*         | testing           |  
 | \<sem-ver-tag\>     | 0.1.2  + latest   |  
+
+## Vesion Update
+
+To automatically check for version updates of ansible we provide a small python script.
+
+    python3 update/update.py 
 
 ## License 
 
