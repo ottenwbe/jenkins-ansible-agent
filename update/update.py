@@ -47,7 +47,8 @@ def _ansible_image_version_exists(line):
     return re.search(ANSIBLE_IMAGE_VERSION, line)
 
 
-def _replace_line_if_image_version(new_version, line, updated):
+def _replace_line_if_image_version(new_version, line):
+    updated = False
     current_version = re.search(VERSION_REGEX, line).group()
     if (current_version != new_version):
         print("{}={}".format(ANSIBLE_IMAGE_VERSION, new_version))
@@ -61,7 +62,7 @@ def _replace_outdated_versions(new_version):
     updated = False
     for line in fileinput.input(VERSIONS_SH, inplace=True):
         if(_ansible_image_version_exists(line)):
-            updated = _replace_line_if_image_version(new_version, line, updated)
+            updated = _replace_line_if_image_version(new_version, line) or updated
         else:
             print(line, end='')
     return updated
@@ -74,7 +75,7 @@ def main():
         print("New Version: {}".format(version_number))
         _update_versons_in_git(version_number)
     else:
-        print("No Update")
+        print("No Version Update")
 
 
 if __name__ == "__main__":

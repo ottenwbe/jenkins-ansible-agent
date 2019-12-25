@@ -35,16 +35,6 @@ class UpdateTest(unittest.TestCase):
         f.write("#!/bin/bash\n\nJENKINS_IMAGE_TAG=latest\nANSIBLE_IMAGE_VERSION=0.0.0\n")
         f.close() 
 
-    #def test_regex(self):
-    #    updated = update._replace_line_if_image_version(
-    #        "0.0.0", "ANSIBLE_IMAGE_VERSION=1.2.3", False)
-    #    self.assertTrue(updated)
-
-    #def test_failing_regex(self):
-    #   updated = update._replace_line_if_image_version(
-    #        "1.2.3", "ANSIBLE_IMAGE_VERSION=1.2.3", False)
-    #    self.assertFalse(updated)
-
     def test_keep_version(self):
         update._get_latest_ansible_version.return_value = "0.0.0"
         update.main()
