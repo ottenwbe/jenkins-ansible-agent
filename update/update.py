@@ -30,8 +30,6 @@ VERSIONS_SH = "versions.sh"
 
 
 def _update_versons_in_git(new_version):
-    os.system("git config --global user.email 'ottenwbe.public@gmail.com'")
-    os.system("git config --global user.name 'Beate Ottenwaelder'")
     os.system("git commit -m'Ansible Version Updated to v{}' -a".format(new_version))
     os.system('git push --quiet origin HEAD:production')
     os.system("git tag {}".format(new_version))
