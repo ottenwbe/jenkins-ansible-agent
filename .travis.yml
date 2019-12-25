@@ -9,9 +9,4 @@ jobs:
   include:
     - stage: test
       script: 
-        - python -m unittest update.update_test
-        - python update/update.py
-    - stage: update
-      script: 
-        - python update/update.py
-        - cat versions.sh
+        - python3 -m unittest update.update_test
