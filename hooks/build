@@ -1,5 +1,5 @@
 #!/bin/bash
 
-. versions.sh
+sh versions.sh
 docker build --build-arg ANSIBLE_VERSION=$ANSIBLE_IMAGE_VERSION --build-arg BASE_IMAGE_TAG=$JENKINS_IMAGE_TAG -f $DOCKERFILE_PATH -t $IMAGE_NAME .
 docker tag $IMAGE_NAME $DOCKER_REPO:sut
