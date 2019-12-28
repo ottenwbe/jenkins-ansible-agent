@@ -26,14 +26,16 @@ import os
 import unittest.mock
 from unittest.mock import MagicMock
 
+
 class UpdateTest(unittest.TestCase):
     def setUp(self):
-        update._get_latest_ansible_version = MagicMock()   
-        update._update_versons_in_git = MagicMock()     
+        update._get_latest_ansible_version = MagicMock()
+        update._update_versons_in_git = MagicMock()
         update.VERSIONS_SH = "valid.sh"
         f = open(update.VERSIONS_SH, "w+")
-        f.write("#!/bin/bash\n\nJENKINS_IMAGE_TAG=latest\nANSIBLE_IMAGE_VERSION=0.0.0\n")
-        f.close() 
+        f.write(
+            "#!/bin/bash\n\nJENKINS_IMAGE_TAG=latest\nANSIBLE_IMAGE_VERSION=0.0.0\n")
+        f.close()
 
     def test_keep_version(self):
         update._get_latest_ansible_version.return_value = "0.0.0"
