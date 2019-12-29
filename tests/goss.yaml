@@ -1,8 +1,6 @@
 user:
-  jenkins:
-    exists: true
   root:
-    exists: false
+    exists: true
 command:
   ansible-playbook --version:
     exit-status: 0
