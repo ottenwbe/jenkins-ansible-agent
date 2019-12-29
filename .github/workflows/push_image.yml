@@ -10,9 +10,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      name: Checkout
     - name: Build the Docker image
       run: |
         source versions.sh
-        docker build --build-arg ANSIBLE_VERSION=$ANSIBLE_IMAGE_VERSION --build-arg BASE_IMAGE_TAG=$JENKINS_IMAGE_TAG -f $DOCKERFILE_PATH -t $IMAGE_NAME .
-        docker tag $IMAGE_NAME $DOCKER_REPO:sut
+        docker build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=$JENKINS_IMAGE_TAG -f $DOCKERFILE_PATH -t ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} .
+        docker tag ${IMAGE_NAME} ${DOCKER_REPO}:sut
+    - name: Test the Docker image
+      run: |
+        sh tests/run_test.sh
 

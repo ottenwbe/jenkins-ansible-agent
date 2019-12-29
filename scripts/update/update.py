@@ -49,7 +49,7 @@ def _replace_line_if_image_version(new_version, line):
     updated = False
     current_version = re.search(VERSION_REGEX, line).group()
     if (current_version != new_version):
-        print("{}={}".format(ANSIBLE_IMAGE_VERSION, new_version))
+        print("export {}={}".format(ANSIBLE_IMAGE_VERSION, new_version))
         updated = True
     else:
         print(line)
