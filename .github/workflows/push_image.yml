@@ -14,8 +14,9 @@ jobs:
     - name: Build the Docker image
       run: |
         source versions.sh
-        docker build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=$JENKINS_IMAGE_TAG -f $DOCKERFILE_PATH -t ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} .
+        docker build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=${JENKINS_IMAGE_TAG} -f ${DOCKERFILE_PATH} -t ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} .
         docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:sut
+        docker run ${DOCKER_REPO}:sut /bin/bash less /etc/passwd
     - name: Test the Docker image
       run: |
         sh tests/run_test.sh
