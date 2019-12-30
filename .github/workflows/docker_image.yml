@@ -18,9 +18,9 @@ jobs:
     - name: Test the Docker image
       run: |
         sh tests/run_test.sh
-    - name: Test the Docker image
+    - name: Echo the Docker image
       run: |
-        echo ${ANSIBLE_IMAGE_VERSION}
+        echo "hi ${ANSIBLE_IMAGE_VERSION}"
     #- name: Publish to Registry
     #  uses: elgohr/Publish-Docker-Github-Action@master
     #  with:
