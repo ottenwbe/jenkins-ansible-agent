@@ -22,5 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+export GOSS_DST=.
 curl -fsSL https://goss.rocks/install | sh
-goss -g /tests/goss.yaml validate
+./goss -g /tests/goss.yaml validate
