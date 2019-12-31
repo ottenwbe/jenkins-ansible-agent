@@ -8,9 +8,7 @@ on:
       - '*.*.*'
   pull_request:
     branches:
-      - production
-  schedule:
-    - cron:  '* * */2 * *'      
+      - production      
 
 jobs:
 
