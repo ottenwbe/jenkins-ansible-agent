@@ -10,6 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      run: echo test
       name: Checkout
     - name: T1
       run: |
