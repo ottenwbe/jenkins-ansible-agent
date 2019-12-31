@@ -19,6 +19,7 @@ jobs:
       run: |
         source versions.sh      
         docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:sut
+        cd tests
         docker-compose up
 #        sh tests/run_test.sh
     #- name: Publish to Dockerhub
