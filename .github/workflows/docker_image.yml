@@ -10,7 +10,7 @@ on:
     branches:
       - production
   schedule:
-    - cron:  '*/15 * * * *'      
+    - cron:  '* * */2 * *'      
 
 jobs:
 
