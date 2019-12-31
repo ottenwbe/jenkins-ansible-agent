@@ -1,5 +1,5 @@
 user:
-  root:
+  jenkins:
     exists: true
 command:
   ansible-playbook --version:

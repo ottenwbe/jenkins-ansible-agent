@@ -10,28 +10,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      run: echo test
       name: Checkout
-    - name: T1
-      run: |
-        export X=1      
-    - name: T2
-      run: |
-        echo "hi ${X}"              
     - name: Build the Docker Image
       run: |
         source versions.sh
         docker build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=${JENKINS_IMAGE_TAG} -f ${DOCKERFILE_PATH} -t ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} .
     - name: Test the Docker image
       run: |
-        sh tests/run_test.sh
-    - name: Echo the Docker image
-      run: |
         source versions.sh      
-        echo "hi ${ANSIBLE_IMAGE_VERSION}"
-    #- name: Publish to Registry
-    #  uses: elgohr/Publish-Docker-Github-Action@master
-    #  with:
-    #    name: myDocker/repository
-    #    username: ${{ secrets.DOCKER_USERNAME }}
-    #    password: ${{ secrets.DOCKER_PASSWORD }}
+        docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:sut
+        docker-compose up
+#        sh tests/run_test.sh
+    #- name: Publish to Dockerhub
+    #  run: |
+    #    source versions.sh    
+    #    docker push ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION}
+
