@@ -23,9 +23,12 @@ Use the Makefile to build the Docker image locally.
 make docker
 ```
 
-### Docker Automated Build
+## GitHub Actions
 
-Docker hub's automated builds are configured to create the images.
+Github Action Workflows are are configured to 
+1. automatically update the docker build configuration, i.e., __versions.sh__ with the latest ansible version
+1. automatically test the update script for  the docker configuration 
+1. create and publish the docker images
 
 It will automatically create a docker tag based on the git branch/tag:
 

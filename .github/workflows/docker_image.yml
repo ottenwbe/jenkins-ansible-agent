@@ -21,6 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout
+      with:
+        ref: 'production'
     - name: Build the Docker Image
       run: |
         source versions.sh
