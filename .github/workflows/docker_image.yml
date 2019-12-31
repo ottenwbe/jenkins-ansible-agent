@@ -24,5 +24,9 @@ jobs:
     - name: Publish to Dockerhub
       run: |
         source versions.sh    
+        echo ${docker_password} | docker login -u ${docker_user}
         docker push ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION}
+    env: 
+      docker_password: ${{ secrets.DOCKERHUB_PASSWORD }}        
+      docker_user: ${{ secrets.DOCKERHUB_USER }}              
 
