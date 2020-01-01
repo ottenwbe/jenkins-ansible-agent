@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r scripts/requirements.txt
     - name: Update Ansible Version
       run: |
         git remote set-url --push origin https://your_username:${GITHUB_TOKEN}@github.com/ottenwbe/jenkins-ansible-agent
