@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - production
-    tags:
-      - '*.*.*'
   pull_request:
     branches:
       - production
