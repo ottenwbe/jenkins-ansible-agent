@@ -23,5 +23,10 @@ jobs:
         pip install -r requirements.txt
     - name: Update Ansible Version
       run: |
-        python scripts/update/update.py             
+        git remote set-url --push origin https://your_username:${GITHUB_TOKEN}@github.com/ottenwbe/jenkins-ansible-agent
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'ottenwbe.public@gmail.com'        
+        python scripts/update/update.py        
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
         
