@@ -24,23 +24,23 @@ make docker
 ## GitHub Actions
 
 Github Action Workflows are are configured to 
-1. automatically update the docker build configuration, i.e., __versions.sh__ with the latest ansible version (TODO)
-1. automatically test the update script for  the docker configuration 
-1. create and publish the docker images
+1. automatically update the docker build configuration, i.e., __versions.sh__ with the latest ansible version (see update_ansible.yml)
+1. automatically test the update script for the docker configuration (see ci_update_app.yml)
+1. create and publish the docker images (see docker_image.yml)
 
-    1. It will automatically create a docker tag based on the git branch/tag (TODO):
+    1. It will automatically create a docker tag based on the git branch/tag:
 
         | git branch/tag    | docker tag     |  
         |---                | ---            |
         | master            | testing        |  
         | feature/*         | testing        |  
-        | \<sem-ver-tag\>     | \<sem-ver-tag\>  + latest   |  
+        | production        | \<sem-ver-tag\>  + latest   |  
 
 ## Vesion Update
 
-To automatically check for version updates of ansible we provide a small python script.
+To automatically update the ansible version we provide a small python script. This script is executed as part of the _Ansible Version Update_ workflow.
 
-    python3 update/update.py 
+    python3 scripts/update/update.py 
 
 ## License 
 
