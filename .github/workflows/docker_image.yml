@@ -50,6 +50,6 @@ jobs:
     - name: Publish to Dockerhub
       run: |
         source versions.sh    
-       # docker push ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION}      
+       #docker push ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION}      
         #docker push ${DOCKER_REPO}:latest              
 
