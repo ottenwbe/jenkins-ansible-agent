@@ -32,7 +32,7 @@ Github Action Workflows are are configured to
 
         | git branch/tag  |  docker tag     |  description   |
         |---              | ---     | ---            |
-        | master          |  \<sem-ver-tag\>  + latest        |  built on push and daily builds  |
+        | master          |  \<sem-ver-tag\>  + latest        |  built on push + daily builds  |
 
 ## Vesion Update
 

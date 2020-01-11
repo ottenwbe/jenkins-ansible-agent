@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - feature/*
   schedule:
     - cron:  '0 21 * * *'      
 
@@ -16,17 +17,32 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout
-    - name: Build the Docker Image
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: crazy-max/ghaction-docker-buildx@v1
+      with:
+        version: latest                      
+    - name: Build the linux/amd64 docker image
       run: |
         source versions.sh
         docker build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=${JENKINS_IMAGE_TAG} -f ${DOCKERFILE_PATH} -t ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} .
-        docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:latest        
-    - name: Test the Docker image
+        docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:latest                
+    - name: Test the linux/amd64 docker image
       run: |
         source versions.sh      
         docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:sut
         cd tests
         docker-compose up
+    - name: Build the arm docker image and push the image
+      run: |
+        source versions.sh      
+        docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:sut
+        cd tests
+        docker-compose up        
+    - name: Build the linux/amd64 docker image
+      run: |
+        source versions.sh
+        docker buildx build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=${JENKINS_IMAGE_TAG} -f ${DOCKERFILE_PATH}.armhf --platform --platform linux/arm/v7 -t ottenwbe/armv7-jenkins-ansible-agent:${ANSIBLE_IMAGE_VERSION} . 
     - uses: azure/docker-login@v1
       with:
         username: ${{ secrets.DOCKERHUB_USER }}  
@@ -34,6 +50,6 @@ jobs:
     - name: Publish to Dockerhub
       run: |
         source versions.sh    
-        docker push ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION}      
-        docker push ${DOCKER_REPO}:latest              
+       # docker push ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION}      
+        #docker push ${DOCKER_REPO}:latest              
 
