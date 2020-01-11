@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 ARG BASE_IMAGE_TAG
-FROM ottenwbe/jenkins-ssh-agent:${BASE_IMAGE_TAG}
+FROM ottenwbe/armv7-jenkins-ssh-agent:${BASE_IMAGE_TAG}
 
 ARG ANSIBLE_VERSION
 
