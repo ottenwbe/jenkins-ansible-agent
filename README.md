@@ -30,11 +30,9 @@ Github Action Workflows are are configured to
 
     1. It will automatically create a docker tag based on the git branch/tag:
 
-        | git branch/tag    | docker tag     |  
-        |---                | ---            |
-        | master            | testing        |  
-        | feature/*         | testing        |  
-        | production        | \<sem-ver-tag\>  + latest   |  
+        | git branch/tag  |  docker tag     |  description   |
+        |---              | ---     | ---            |
+        | master          |  \<sem-ver-tag\>  + latest        |  built on push and daily builds  |
 
 ## Vesion Update
 
