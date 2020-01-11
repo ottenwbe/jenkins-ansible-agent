@@ -13,8 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout
-      with:
-        ref: 'production'
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
