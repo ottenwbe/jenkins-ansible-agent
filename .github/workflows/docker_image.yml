@@ -20,7 +20,7 @@ jobs:
     - name: Build the linux/amd64 docker image
       run: |
         source versions.sh
-        docker build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=${JENKINS_IMAGE_TAG} -f ${DOCKERFILE_PATH} -t ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} .
+        make docker
         docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:latest                
     - name: Test the linux/amd64 docker image
       run: |
