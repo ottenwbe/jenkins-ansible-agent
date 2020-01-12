@@ -8,8 +8,12 @@ REPO := ottenwbe
 env.mk: versions.sh
 	sed 's/"//g ; s/=/:=/' < $< > $@
 
-docker: versions.sh ## Create the ansible docker image
+docker: versions.sh ## Create the ansible docker image form linux/amd64
 	docker build --build-arg BASE_IMAGE_TAG=$(JENKINS_IMAGE_TAG) --build-arg ANSIBLE_VERSION=$(ANSIBLE_IMAGE_VERSION) --label "version=${ANSIBLE_IMAGE_VERSION}" --label "build_date=${BUILD_DATE}"  --label "maintainer=Beate Ottenwaelder <ottenwbe.public@gmail.com>" -t $(REPO)/$(NAME):$(ANSIBLE_IMAGE_VERSION) .
+
+docker-arm: versions.sh ## Create the ansible docker image for linux/arm/v7
+	export DOCKER_CLI_EXPERIMENTAL=enabled ; \
+	docker buildx build --build-arg BASE_IMAGE_TAG=$(JENKINS_IMAGE_TAG) --build-arg ANSIBLE_VERSION=$(ANSIBLE_IMAGE_VERSION) --label "version=${ANSIBLE_IMAGE_VERSION}" --label "build_date=${BUILD_DATE}"  --label "maintainer=Beate Ottenwaelder <ottenwbe.public@gmail.com>" -t $(REPO)/$(NAME):$(ANSIBLE_IMAGE_VERSION) .
 
 docker-test: versions.sh ## Create the ansible docker image
 	docker run -d --name $(NAME)-test -v $(shell pwd)/tests:/tests $(REPO)/$(NAME):$(ANSIBLE_IMAGE_VERSION) 
