@@ -42,7 +42,7 @@ jobs:
     - name: Build the linux/amd64 docker image
       run: |
         source versions.sh
-        docker buildx build --build-arg ANSIBLE_VERSION=${ANSIBLE_IMAGE_VERSION} --build-arg BASE_IMAGE_TAG=${JENKINS_IMAGE_TAG} -f ${DOCKERFILE_PATH}.armhf --platform linux/arm/v7 -t ottenwbe/jenkins-ansible-agent:armv7-${ANSIBLE_IMAGE_VERSION} . 
+        docker buildx build --build-arg BASE_IMAGE_TAG=latest --build-arg ANSIBLE_VERSION=2.9.2 -f Dockerfile.armhf --platform linux/amd64 -t username/demo:latest .
     - uses: azure/docker-login@v1
       with:
         username: ${{ secrets.DOCKERHUB_USER }}  
