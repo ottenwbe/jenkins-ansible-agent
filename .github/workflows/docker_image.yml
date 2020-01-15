@@ -25,7 +25,7 @@ jobs:
     - name: Build the linux/amd64 docker image
       run: |
         source versions.sh
-        Make docker
+        make docker
         docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:latest                
     - name: Test the linux/amd64 docker image
       run: |
