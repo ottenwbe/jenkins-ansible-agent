@@ -33,14 +33,14 @@ jobs:
         docker tag ${DOCKER_REPO}:${ANSIBLE_IMAGE_VERSION} ${DOCKER_REPO}:sut
         cd tests
         docker-compose up
+    - uses: azure/docker-login@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USER }}  
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}          
     - name: Build the arm docker image and push the image
       run: |
         source versions.sh      
         make docker-arm
-    - uses: azure/docker-login@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USER }}  
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}  
     - name: Publish to Dockerhub
       run: |
         source versions.sh    
