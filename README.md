@@ -15,11 +15,19 @@ docker pull ottenwbe/jenkins-ansible-agent
 
 ### Local Build
 
-Use the Makefile to build the Docker image locally.
+Use the Makefile to build the Docker image locally 
 
-```
-make docker
-```
+For linux/amd64:
+
+    ```
+    make docker
+    ```
+
+For linux/arm/v7:
+
+    ```
+    make docker
+    ```
 
 ## GitHub Actions
 
