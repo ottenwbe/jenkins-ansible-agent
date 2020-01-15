@@ -39,7 +39,6 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}          
     - name: Build the arm docker image and push the image
       run: |
-        source versions.sh      
         make docker-arm
     - name: Publish to Dockerhub
       run: |
