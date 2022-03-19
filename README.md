@@ -1,7 +1,7 @@
 # jenkins-ansible-agent
 
 A docker ssh agent for Jenkins that allows you to run ansible scripts. 
-
+The image is automatically updated by Github Actions.
 
 ## Docker Images
 
