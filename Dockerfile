@@ -21,13 +21,13 @@
 # SOFTWARE.
 
 ARG BASE_IMAGE_TAG
-FROM jenkinsci/ssh-slave:${BASE_IMAGE_TAG}
+FROM jenkins/agent:${BASE_IMAGE_TAG}
 
 ARG ANSIBLE_VERSION
 
 RUN apt-get update \
     && apt-get -y upgrade \
-    && apt-get -y --no-install-recommends install python python-pip python-setuptools \
+    && apt-get -y --no-install-recommends install python python-pip python-setuptools git \
     && pip install wheel \
     && pip install ansible==${ANSIBLE_VERSION} \
     && apt-get clean \
