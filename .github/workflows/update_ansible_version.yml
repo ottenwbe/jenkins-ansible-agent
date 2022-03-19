@@ -1,9 +1,6 @@
 name: Ansible Version Update
 
 on: 
-  push:
-    branches:
-      - production
   schedule:
     - cron:  '0 20 * * *'      
 
