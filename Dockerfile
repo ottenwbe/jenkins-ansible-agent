@@ -29,7 +29,7 @@ USER root
 
 RUN apt-get update \
     && apt-get -y upgrade \
-    && apt-get -y --no-install-recommends install python python3 python3-pip python-setuptools git \
+    && apt-get -y --no-install-recommends install python python3-pip python-setuptools git \
     && pip install wheel \
     && pip install ansible==${ANSIBLE_VERSION} \
     && apt-get clean \
