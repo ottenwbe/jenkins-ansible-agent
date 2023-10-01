@@ -21,14 +21,18 @@
 # SOFTWARE.
 
 ARG BASE_IMAGE_TAG
-FROM jenkins/agent:${BASE_IMAGE_TAG}
+FROM docker.io/jenkins/agent:${BASE_IMAGE_TAG}
 
 ARG ANSIBLE_VERSION
 
+USER root
+
 RUN apt-get update \
     && apt-get -y upgrade \
-    && apt-get -y --no-install-recommends install python python-pip python-setuptools git \
+    && apt-get -y --no-install-recommends install python python3-pip python-setuptools git \
     && pip install wheel \
     && pip install ansible==${ANSIBLE_VERSION} \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* 
+
+USER jenkins
