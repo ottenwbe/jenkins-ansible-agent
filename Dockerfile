@@ -29,10 +29,12 @@ USER root
 
 RUN apt-get update \
     && apt-get -y upgrade \
-    && apt-get -y --no-install-recommends install python python3-pip python-setuptools git \
-    && pip install wheel \
-    && pip install ansible==${ANSIBLE_VERSION} \
+    && apt-get -y --no-install-recommends install python3 python3-pip python3-wheel python3-setuptools python3-venv git \
+    && python3 -m venv /opt/ansible \
+    && /opt/ansible/bin/pip install ansible==${ANSIBLE_VERSION} \    
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* 
+
+ENV PATH="/opt/ansible/bin:$PATH"
 
 USER jenkins
